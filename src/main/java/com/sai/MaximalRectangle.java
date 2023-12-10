@@ -5,6 +5,7 @@ import static com.sai.WildCartMatching.print;
 public class MaximalRectangle {
 
 class Solution {
+    // dp[i][j]: Represents the side length of the largest square ending at the cell (i, j).
   public int maximalSquare(char[][] matrix) {
     final int m = matrix.length;
     final int n = matrix[0].length;
