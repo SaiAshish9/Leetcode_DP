@@ -8,6 +8,7 @@ public class DecodeWays {
 
     static boolean isSafe(char c1, char c2) {
         return c1 == '1' || (c1 == '2' && c2 <= '6');
+        // total number of alphabets: 26
     }
 
     static int numDecodings(String s1) {
