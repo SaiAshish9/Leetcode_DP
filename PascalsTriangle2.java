@@ -1,9 +1,11 @@
-package com.sai;
+package org.dp;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class PascalsTriangle2 {
+
+//    dp[i] corresponds to a specific value in the current
+//    row of Pascal's Triangle being computed using dynamic programming.
 
     static int[] getRow(int rowIndex) {
         int[] dp = new int[rowIndex + 1];
@@ -15,10 +17,7 @@ public class PascalsTriangle2 {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(getRow(3)));
-//        [1, 3, 3, 1]
+
     }
 
 }
-
-

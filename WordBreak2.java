@@ -1,4 +1,4 @@
-package com.sai;
+package org.dp;
 
 import java.util.*;
 
@@ -40,5 +40,3 @@ public class WordBreak2 {
     }
 
 }
-
-

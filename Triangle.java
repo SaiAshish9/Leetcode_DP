@@ -1,20 +1,17 @@
-package com.sai;
+package org.dp;
 
 import java.util.Arrays;
 
 public class Triangle {
 
-    static int minimumTotal(int[][] triangle) {
-        for (int i = triangle.length - 2; i >= 0; --i)
+//dp[i][j] represents the minimum path sum from the current position (i, j) to the bottom of the triangle.
+    static int minimumTotal(int[][] dp) {
+        for (int i = dp.length - 2; i >= 0; --i)
             for (int j = 0; j <= i; ++j)
-                triangle[i][j] += Math.min(triangle[i + 1][j],
-                        triangle[i + 1][j + 1]);
-        System.out.println();
-        System.out.println();
-        System.out.println(Arrays.deepToString(triangle).replace("],", "],\n"));
-        System.out.println();
-        System.out.println();
-        return triangle[0][0];
+                dp[i][j] += Math.min(dp[i + 1][j],
+                        dp[i + 1][j + 1]);
+        System.out.println(Arrays.deepToString(dp).replace("],", "],\n"));
+        return dp[0][0];
     }
 
     public static void main(String[] args) {
@@ -26,5 +23,5 @@ public class Triangle {
         }));
         // 11
     }
-}
 
+}

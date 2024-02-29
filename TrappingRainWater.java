@@ -1,47 +1,37 @@
-package com.sai;
-
-import java.util.Arrays;
+package org.dp;
 
 public class TrappingRainWater {
 
     public static int trap(int[] height) {
-        int max1 = 0;
-        int left[] = new int[height.length];
-        for (int i = 0; i < height.length; i++) {
-            if (max1 < height[i]) {
-                max1 = height[i];
-            }
-            left[i] = max1;
+        int n = height.length;
+
+        if (n == 0) {
+            return 0;
         }
-        int max2 = 0;
-        int right[] = new int[height.length];
-        for (int i = height.length - 1; i >= 0; i--) {
-            if (max2 < height[i]) {
-                max2 = height[i];
-            }
-            right[i] = max2;
+
+        int[] ldp = new int[n];
+        int[] rdp = new int[n];
+
+        // calculate the max height to the left of each element
+        ldp[0] = height[0];
+        for (int i = 1; i < n; i++) {
+            ldp[i] = Math.max(ldp[i - 1], height[i]);
         }
-        int trap = 0;
-        for (int i = 0; i < height.length; i++) {
-            trap += Math.min(left[i], right[i]) - height[i];
+
+        // calculate the max height to the right of each element
+        rdp[n - 1] = height[n - 1];
+        for (int i = n - 2; i >= 0; i--) {
+            rdp[i] = Math.max(rdp[i + 1], height[i]);
         }
-        System.out.println();
-        System.out.println();
-        System.out.println("left");
-        System.out.println(Arrays.toString(left));
-        System.out.println();
-        System.out.println("right");
-        System.out.println(Arrays.toString(right));
-        System.out.println();
-        System.out.println();
-        return trap;
+
+        int trappedWater = 0;
+
+        // calculate the trapped water at each position
+        for (int i = 0; i < n; i++) {
+            trappedWater += Math.min(ldp[i], rdp[i]) - height[i];
+        }
+
+        return trappedWater;
     }
 
-    public static void main(String[] args) {
-        System.out.println(trap(new int[]{2, 0, 2})); // 2
-    }
 }
-
-
-
-

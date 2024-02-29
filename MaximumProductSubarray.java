@@ -1,4 +1,4 @@
-package com.sai;
+package org.dp;
 
 public class MaximumProductSubarray {
 
@@ -17,13 +17,8 @@ public class MaximumProductSubarray {
         return ans;
     }
 
-
     public static void main(String[] args) {
         System.out.println(maxProduct(new int[]{2, 3, -2, 4})); // 6
     }
 
 }
-
-
-
-

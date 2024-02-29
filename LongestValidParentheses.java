@@ -1,27 +1,26 @@
-package com.sai;
+package org.dp;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class LongestValidParentheses {
-    static void lvp(String s) {
-        String s2 = ")" + s;
-        int n = s.length();
+
+    // dp[i] := Length of the longest valid parentheses substring of s1[1..i]
+    public static int longestValidParentheses(String s) {
+        String s1 = ")" + s;
+        int n = s1.length();
         int[] dp = new int[n];
-        Arrays.fill(dp, 0);
-        for (int i = 1; i < n; ++i)
-            if (s2.charAt(i) == ')' && s2.charAt(i - dp[i - 1] - 1) == '(')
+        for (int i = 1; i < n; i++) {
+            if (s1.charAt(i) == ')' && s1.charAt(i - dp[i - 1] - 1) == '(') {
                 dp[i] = dp[i - 1] + dp[i - dp[i - 1] - 2] + 2;
-        System.out.println();
-        System.out.println();
+            }
+        }
         System.out.println(Arrays.toString(dp));
-        System.out.println(Arrays.asList(s.split("")).toString());
-        System.out.println();
-        System.out.println();
-//        System.out.println(Arrays.stream(dp).max().getAsInt());
+        return Arrays.stream(dp).max().getAsInt();
     }
 
     public static void main(String[] args) {
-        lvp("()()()("); // 6
+        System.out.println(longestValidParentheses("()()(()()()()"));
     }
+//  O(n)
+
 }

@@ -1,7 +1,8 @@
-package com.sai;
+package org.dp;
 
 public class UniqueBinarySearchTrees {
 
+//  dp[i] represents the number of unique binary search trees that can be formed with i nodes.
     static int numTrees(int n) {
         int[] dp = new int[n + 1];
         dp[0] = 1;
@@ -12,12 +13,9 @@ public class UniqueBinarySearchTrees {
         return dp[n];
     }
 
-    ;
-
     public static void main(String[] args) {
         System.out.println(numTrees(3)); // 5
     }
+
+
 }
-
-
-

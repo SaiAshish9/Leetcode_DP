@@ -1,4 +1,4 @@
-package com.sai;
+package org.dp;
 
 import java.util.Arrays;
 
@@ -19,18 +19,14 @@ public class PalindromePartitioning2 {
             }
             cut[i] = min;
         }
-        System.out.println();
-        System.out.println();
         System.out.println(Arrays.toString(cut));
-        System.out.println();
-        System.out.println();
         return cut[n - 1];
     }
+
+//    dp[i][j] represents whether the substring from index i to index j in the string s is a palindrome.
 
     public static void main(String[] args) {
         System.out.println(minCut("aab")); // 1
     }
 
 }
-
-

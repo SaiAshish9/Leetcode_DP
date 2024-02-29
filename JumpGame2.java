@@ -1,4 +1,4 @@
-package com.sai;
+package org.dp;
 
 import java.util.Arrays;
 
@@ -16,19 +16,13 @@ public class JumpGame2 {
                 }
             }
         }
-        System.out.println();
-        System.out.println();
         System.out.println(Arrays.toString(dp));
-        System.out.println();
-        System.out.println();
         return dp[n - 1];
     }
 
     public static void main(String[] args) {
-        System.out.println(jump(new int[]{2, 3, 1, 1, 4})); // 2
+        System.out.println(jump(new int[]{2, 3, 1, 1, 4}));
     }
+//    O(n^2)
 
 }
-
-
-

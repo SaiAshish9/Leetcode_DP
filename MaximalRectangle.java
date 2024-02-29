@@ -1,9 +1,10 @@
-package com.sai;
+package org.dp;
 
-import static com.sai.WildCartMatching.print;
+import java.util.Arrays;
 
-public class MaximalRectangle {
+class MaximalRectangle {
 
+    // dp[i][j] represents the height of consecutive '1's ending at the cell (i, j) in the binary matrix
     static int maximalRectangle(char[][] matrix) {
         if (matrix.length == 0) return 0;
         int n = matrix.length;
@@ -24,7 +25,7 @@ public class MaximalRectangle {
                 }
             }
         }
-        print(dp, n - 1, m-1);
+        System.out.println(Arrays.deepToString(dp).replaceAll("],", "],\n"));
         return maxArea;
     }
 
@@ -41,6 +42,4 @@ public class MaximalRectangle {
     }
 
 }
-
-
 

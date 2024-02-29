@@ -1,4 +1,4 @@
-package com.sai;
+package org.dp;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,14 +7,28 @@ public class PalindromePartitioning {
 
     public static List<List<String>> partition(String s) {
         List<List<String>> res = new ArrayList<>();
-        boolean[][] dp = new boolean[s.length()][s.length()];
-        for (int i = 0; i < s.length(); i++) {
-            for (int j = 0; j <= i; j++) {
-                if (s.charAt(i) == s.charAt(j) && (i - j <= 2 || dp[j + 1][i - 1])) {
-                    dp[j][i] = true; // palindromic string from j to i
+        int n = s.length();
+        boolean[][] dp = new boolean[n][n];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j <= n - 1; j++) {
+                if (i == j) {
+                    dp[i][j] = true;
+                } else if (s.charAt(i) == s.charAt(j)) {
+                    if (j - i == 1) {
+                        dp[i][j] = true;
+                    } else {
+                        dp[i][j] = dp[i + 1][j - 1];
+                    }
                 }
             }
         }
+//        for (int i = 0; i < s.length(); i++) {
+//            for (int j = 0; j <= i; j++) {
+//                if (s.charAt(i) == s.charAt(j) && (i - j <= 2 || dp[j + 1][i - 1])) {
+//                    dp[j][i] = true; // palindromic string from j to i
+//                }
+//            }
+//        }
         helper(res, new ArrayList<>(), dp, s, 0);
         return res;
     }
@@ -39,5 +53,3 @@ public class PalindromePartitioning {
     }
 
 }
-
-

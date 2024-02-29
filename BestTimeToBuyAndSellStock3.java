@@ -1,7 +1,8 @@
-package com.sai;
+package org.dp;
 
 public class BestTimeToBuyAndSellStock3 {
 
+// dp[i][j] represents the maximum profit at the end of day j considering at most i transactions.
     public static int maxProfit(int[] prices) {
         int n = prices.length;
         int dp[][] = new int[3][n];
@@ -22,5 +23,3 @@ public class BestTimeToBuyAndSellStock3 {
     }
 
 }
-
-

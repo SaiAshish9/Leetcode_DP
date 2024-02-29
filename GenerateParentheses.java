@@ -1,51 +1,39 @@
-package com.sai;
+package org.dp;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GenerateParentheses {
-    public static List<String> generateParenthesis(int n) {
+
+    private List<String> generateParentheses(int n) {
+
         List<List<String>> dp = new ArrayList<>();
-        List<String> dp0 = new ArrayList<>();
-        dp0.add("");
-        dp.add(dp0);
+        for (int i = 0; i <= n; i++) {
+            dp.add(new ArrayList<>());
+        }
+        dp.get(0).add("");
+
         for (int i = 1; i <= n; i++) {
-            List<String> cur = new ArrayList<>();
             for (int j = 0; j < i; j++) {
-                List<String> str1 = dp.get(j);
-                List<String> str2 = dp.get(i - j - 1);
-                for (String s1 : str1) {
-                    for (String s2 : str2) {
-                        cur.add("(" + s1 + ")" + s2);
+                List<String> curr = new ArrayList<>();
+                for (String x : dp.get(j)) {
+
+                    for (String y : dp.get(i - j - 1)) {
+                        curr.add("(" + x + ")" + y);
                     }
                 }
+                dp.get(i).addAll(curr);
             }
-            dp.add(cur);
         }
-        System.out.println();
-        System.out.println();
-        for (List<String> str : dp) {
-            for (String s : str) {
-                if (s.equals("()()"))
-                    System.out.print(s + "     ");
-                else if (s.equals(""))
-                    System.out.print("\"\"");
-                else
-                    System.out.print(s + "   ");
-            }
-            System.out.println();
-        }
-        System.out.println();
-        System.out.println();
-        System.out.println();
+
+        System.out.println(dp);
         return dp.get(n);
     }
 
     public static void main(String[] args) {
-        System.out.println(generateParenthesis(3));
+        System.out.println(new GenerateParentheses().generateParentheses(3));
     }
+//    Time: O(n * Cat(n)), where Cat represents the time complexity of Catalan numbers
+
+
 }
-
-
-
-
