@@ -12,6 +12,7 @@ public class Knapsack {
 //            } else if (wt[i - 1] <= w)
 //                dp[i][w] = Math.max(
 //                    val[i - 1] + dp[i - 1][w - wt[i - 1]],
+//                       dp[i - 1][w]); 
 //                );
 //            else dp[i][w] = dp[i - 1][w];
 //        }

@@ -3,7 +3,8 @@ package org.dp;
 import java.util.Arrays;
 
 public class MCL {
-
+ 
+//  dp[i] stores the length of the longest increasing subsequence ending at index i.
     private static int mcl(int[][] envelopes) {
         int n = envelopes.length;
         int[] dp = new int[n];

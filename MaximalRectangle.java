@@ -29,7 +29,6 @@ class MaximalRectangle {
         return maxArea;
     }
 
-
     public static void main(String[] args) {
         System.out.println(maximalRectangle(
                 new char[][]{

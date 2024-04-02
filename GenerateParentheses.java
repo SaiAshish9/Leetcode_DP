@@ -17,7 +17,6 @@ public class GenerateParentheses {
             for (int j = 0; j < i; j++) {
                 List<String> curr = new ArrayList<>();
                 for (String x : dp.get(j)) {
-
                     for (String y : dp.get(i - j - 1)) {
                         curr.add("(" + x + ")" + y);
                     }
@@ -34,6 +33,5 @@ public class GenerateParentheses {
         System.out.println(new GenerateParentheses().generateParentheses(3));
     }
 //    Time: O(n * Cat(n)), where Cat represents the time complexity of Catalan numbers
-
 
 }

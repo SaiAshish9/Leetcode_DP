@@ -33,6 +33,8 @@ public class DecodeWays {
     public static void main(String[] args) {
         System.out.println(numDecodings("12")); // 2
     }
+    // "12" could be decoded as "AB" (1 2) or "L" (12).
+    // Note that the grouping (1 11 06) is invalid because "06" cannot be mapped into 'F' since "6" is different from "06".
 //    [2, 1, 1]
 
 }
