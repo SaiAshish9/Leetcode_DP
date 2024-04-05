@@ -21,6 +21,8 @@ public int countDigitOne(int n) {
         for (long i = 1; i <= n; i *= 10) {
             long divider = i * 10;
             count += (n / divider) * i + Math.min(Math.max(n % divider - i + 1, 0), i);
+            // (n / divider) * i counts the full repetitions of the pattern. 
+            // Math.min(Math.max(n % divider - i + 1, 0), i) accounts for any remaining partial repetition and calculates the count of 1s in that portion.
         }
 
         return count;
