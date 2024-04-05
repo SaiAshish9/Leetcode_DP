@@ -12,6 +12,8 @@ public class BurstBalloons {
         List<Integer> a = new ArrayList<>(Arrays.stream(nums).boxed().toList());
         a.add(0, 1);
         a.add(1);
+        // dp[i][j] represents the maximum number of coins obtainable by bursting all balloons between indices i and j, inclusive.
+        // The final result will be stored in dp[1][n], where n is the length of the nums array.
         int[][] dp = new int[n + 2][n + 2];
         for (int d = 0; d < n; ++d)
             for (int i = 1; i < n - d + 1; ++i) {

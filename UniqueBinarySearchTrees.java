@@ -13,6 +13,12 @@ public class UniqueBinarySearchTrees {
         return dp[n];
     }
 
+// Multiplying dp[j] with dp[i - j - 1] gives the 
+// total number of unique binary search trees that can be 
+// formed with j nodes on the left subtree and i - j - 1 
+// nodes on the right subtree, considering all possible 
+// combinations of left and right subtrees.
+
     public static void main(String[] args) {
         System.out.println(numTrees(3)); // 5
     }
