@@ -4,6 +4,47 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DifferentWaysToAddParentheses {
+
+public List<Integer> diffWaysToCompute(String input) {
+        List<Integer> result = new ArrayList<>();
+        
+        for (int i = 0; i < input.length(); i++) {
+            char c = input.charAt(i);
+            if (c == '+' || c == '-' || c == '*') {
+                String part1 = input.substring(0, i);
+                String part2 = input.substring(i + 1);
+                
+                List<Integer> part1Results = diffWaysToCompute(part1);
+                List<Integer> part2Results = diffWaysToCompute(part2);
+                
+                for (int num1 : part1Results) {
+                    for (int num2 : part2Results) {
+                        int res = 0;
+                        switch (c) {
+                            case '+':
+                                res = num1 + num2;
+                                break;
+                            case '-':
+                                res = num1 - num2;
+                                break;
+                            case '*':
+                                res = num1 * num2;
+                                break;
+                        }
+                        result.add(res);
+                    }
+                }
+            }
+        }
+        
+        if (result.isEmpty()) { // Base case: if the input contains only digits
+            result.add(Integer.valueOf(input));
+        }
+        
+        return result;
+    }
+    
+
     public static List<Integer> fun(String str) {
         List<Integer> ans = new ArrayList<>();
         for (int i = 1; i < str.length(); i++) {
