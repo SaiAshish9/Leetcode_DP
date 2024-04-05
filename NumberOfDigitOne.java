@@ -12,7 +12,20 @@ public class NumberOfDigitOne {
         }
         return limits;
     }
+// Given an integer n, count the total number of digit 1 appearing in all non-negative integers less than or equal to n.
+//  O(log n).
+public int countDigitOne(int n) {
+        if (n <= 0) return 0;
 
+        int count = 0;
+        for (long i = 1; i <= n; i *= 10) {
+            long divider = i * 10;
+            count += (n / divider) * i + Math.min(Math.max(n % divider - i + 1, 0), i);
+        }
+
+        return count;
+    }
+ 
     public static int countDigitOne(int n) {
         int[] limits = getLimitArray(n);
         int[][][] dp = new int[limits.length + 1][2][limits.length + 2];
