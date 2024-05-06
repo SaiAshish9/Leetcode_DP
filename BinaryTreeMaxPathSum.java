@@ -8,7 +8,6 @@ public class BinaryTreeMaxPathSum {
     private int maxSum = Integer.MIN_VALUE;
     private HashMap<TreeNode, Integer> memo = new HashMap<>();
 
-
 //    static int res = Integer.MIN_VALUE;
 //    public static int maxPathSum(TreeNode root) {
 //        solve(root);
