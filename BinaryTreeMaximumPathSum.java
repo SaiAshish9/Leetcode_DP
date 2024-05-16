@@ -13,7 +13,7 @@ public class BinaryTreeMaximumPathSum {
         if (root == null) return 0;
         int left = solve(root.left); // left subtree
         int right = solve(root.right); // right subtree
-        int temp = Math.max(Math.max(left, right) + root.val, root.val);
+        int temp = Math.max(Math.max(left, right) + root.val, root.val); // max of left and right
         int ans = Math.max(temp, left + right + root.val);
         res = Math.max(ans, res);
         return temp;
