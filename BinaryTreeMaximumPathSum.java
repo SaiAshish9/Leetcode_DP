@@ -2,21 +2,38 @@ package com.sai;
 
 public class BinaryTreeMaximumPathSum {
 
-    static int res = Integer.MIN_VALUE;
+    private static int maxSum;
 
-    public static int maxPathSum(TreeNode root) {
-        solve(root);
-        return res;
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    private static class TreeNode {
+        private int val;
+        private TreeNode left;
+        private TreeNode right;
+
+        TreeNode(int data) {
+            this.val = data;
+            this.left = this.right = null;
+        }
     }
 
-    public static int solve(TreeNode root) {
-        if (root == null) return 0;
-        int left = solve(root.left); // left subtree
-        int right = solve(root.right); // right subtree
-        int temp = Math.max(Math.max(left, right) + root.val, root.val); // max of left and right
-        int ans = Math.max(temp, left + right + root.val);
-        res = Math.max(ans, res);
-        return temp;
+    public static int maxPathSum(TreeNode root) {
+        maxSum = Integer.MIN_VALUE;
+        maxGain(root);
+        return maxSum;
+    }
+
+    private static int maxGain(TreeNode node) {
+        if (node != null) {
+
+            int left = Math.max(maxGain(node.left), 0);
+            int right = Math.max(maxGain(node.right), 0);
+            int curr = node.val + left + right;
+            maxSum = Math.max(maxSum, curr);
+            return node.val + Math.max(left, right);
+        }
+        return 0;
     }
 
     public static void main(String[] args) {
