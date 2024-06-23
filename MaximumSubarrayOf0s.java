@@ -9,24 +9,19 @@ public class MaximumSubarrayOf0s {
         int n = nums.length;
 
         // Convert 0s to -1s
-        int[] modifiedArray = new int[n];
+        int[] a = new int[n];
         for (int i = 0; i < n; i++) {
-            modifiedArray[i] = (nums[i] == 0) ? -1 : 1;
+            a[i] = (nums[i] == 0) ? -1 : 1;
         }
-
-        // Dynamic programming to find maximum subarray sum
         int[] dp = new int[n];
-        dp[0] = modifiedArray[0];
+        dp[0] = a[0];
         for (int i = 1; i < n; i++) {
-            dp[i] = Math.max(dp[i - 1] + modifiedArray[i], modifiedArray[i]);
+            dp[i] = Math.max(dp[i - 1] + a[i], a[i]);
         }
 
-        // Find the maximum subarray sum
         int maxSum = Arrays.stream(dp).max().getAsInt();
         System.out.println(Arrays.toString(dp));
 
-        // If all elements are -1, there are no 0s in the array
-        // In this case, return 0 as there is no subarray of 0s
         return (maxSum > 0) ? maxSum : 0;
     }
 
