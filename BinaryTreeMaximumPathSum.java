@@ -26,7 +26,6 @@ public class BinaryTreeMaximumPathSum {
 
     private static int maxGain(TreeNode node) {
         if (node != null) {
-
             int left = Math.max(maxGain(node.left), 0);
             int right = Math.max(maxGain(node.right), 0);
             int curr = node.val + left + right;
